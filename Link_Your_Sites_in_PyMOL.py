@@ -66,7 +66,6 @@ parser.add_argument("--print_alignment",help= 'Choose to visualize the PDB file 
 parser.add_argument("--PDB_chains",help= 'Chain(s) to extract from the PDB sequence(s), write separated by spaces: A B C, default = all ',nargs = '*',default='all')
 args = parser.parse_args()
 PDB_file,Full_PDB_sequence, Gene, M8,List_domains,File_domains,Gene_file_format,prob,missing_data,sequence_number,print_alignment,chains = [args.PDB, args.Full_PDB_sequence,args.Gene, args.M8,args.domains,args.file_domains,args.format,args.prob,args.missing_data,args.sequence_number,args.print_alignment,args.PDB_chains]
-sequence_number = eval(sequence_number)
 try:
     sequence_number=eval(sequence_number)
 except:
