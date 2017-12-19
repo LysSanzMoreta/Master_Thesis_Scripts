@@ -209,7 +209,7 @@ def equivalent_positions(chain_A, chain_B,Aligned_A, Aligned_B,Residues_ID = Non
     Position_in_PDB.append(List[1] - gaps_first_segment - ''.join(Aligned_A[List[0]:List[1]]).count('-'))
 
     accumulated_number_gaps_in_this_segment = gaps_first_segment
-    for i in range(1,len(List)): #we skip the first interval, already performed
+    for i in range(0,len(List)): #we skip the first interval, already performed
         try:
             accumulated_number_gaps_in_this_segment += ''.join(Aligned_A[List[i]:List[i+1]]).count('-')
             Position_in_PDB.append(List[i+1] - accumulated_number_gaps_in_this_segment)
@@ -222,7 +222,7 @@ def equivalent_positions(chain_A, chain_B,Aligned_A, Aligned_B,Residues_ID = Non
     Position_in_Transcript.append(List[1] - gaps_first_segment_Transcript - ''.join(Aligned_B[List[0]:List[1]]).count('-'))
 
     accumulated_number_gaps_in_this_segment_transcript = gaps_first_segment_Transcript
-    for i in range(1, len(List)):  # we skip the first interval
+    for i in range(0, len(List)):  
         try:
             accumulated_number_gaps_in_this_segment_transcript += ''.join(Aligned_B[List[i]:List[i + 1]]).count('-')
             Position_in_Transcript.append(List[i+1] - accumulated_number_gaps_in_this_segment_transcript) # plus on otherwise negative numbers
