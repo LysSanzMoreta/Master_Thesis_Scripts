@@ -382,7 +382,8 @@ def Wrapper_of_all_functions(PDB_file,Gene,Full_PDB_sequence,M8,List_Domains,For
     #Checking if the user wants to perform the alignment with or without missing data in the gene
     if missing_data == 'no':
         Clean_protein_sequence = Translate_and_Remove_missing_data(Gene,Format,Sequence_number)
-        Clean_positions = Corresponding_positions_missing_notmissing_data(Gene_missing_data,Clean_protein_sequence)
+        Protein_missing_data = Translate_sequence(Gene,Format,Sequence_number)
+        Clean_positions = Corresponding_positions_missing_notmissing_data(Protein_missing_data,Clean_protein_sequence)
         Corresponding_Coordinates_and_labels_PDB_Gene(PDB_sequence,Clean_protein_sequence,Full_PDB_sequence, List_of_Positive_Positions,List_domains,Residues_ID,PDB_file,print_alignment, Clean_positions)
 
     else: #Gene_missing_data is our sequence
