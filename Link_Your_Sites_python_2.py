@@ -75,10 +75,10 @@ elif List_domains and File_domains:
     parser.error('Duplicated information, choose either --domains or --file_domains')
 else:
     if not List_domains and not File_domains:
-        print('Not List of Domains or Path to Text file with domains specified, using empty list')
-        print('Building dataframe...')
+        print 'Not List of Domains or Path to Text file with domains specified, using empty list'
+        print 'Building dataframe...'
     else:
-        print('Building dataframe...')
+        print 'Building dataframe...'
 
 def Read_Domains(List_domains,File_domains):
     '''Handle the 2 posibilities of input for the positions of the functional domains in the PDB file'''
@@ -99,7 +99,7 @@ def Global_alignment(chain_A,chain_B):
     from Bio import pairwise2
     from Bio.pairwise2 import format_alignment
     alignment_global = pairwise2.align.globalms(chain_A, chain_B, 2, -1, -5, -1)
-    #print(format_alignment(*alignment_global[0]))
+    #print format_alignment(*alignment_global[0])
     alignment_info_global = alignment_global[0]
     Aligned_3u84, Aligned_ENST00000337652, score, begin, end = alignment_info_global
     return alignment_info_global,alignment_global
