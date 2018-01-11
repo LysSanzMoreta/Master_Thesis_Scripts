@@ -522,7 +522,7 @@ def Pymol():
     cmd.extend("Colour_by_Selection", Colour_by_Selection)
     print("Structure will be at %s" % (os.path.dirname(PDB_file)))
     Colour_by_Selection(sname)
-    pymol.cmd.png(os.path.dirname(PDB_file) + "/%s_PyMOL" % (sname))
+    pymol.cmd.png(os.path.dirname(PDB_file) + "/%s_PyMOL" % (sname.split('.')[0]))
 
 
 
