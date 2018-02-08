@@ -517,7 +517,9 @@ def Pymol():
         for key, value in position_phenotype_dict.items():
             #print(int(key), value, colors[value])
             cmd.color(colors[value], 'resi %s' % int(key))  # --------------->If it does not work probably it has to do with the Residues ID being wrong
-
+            if value == 'Selected_and_Domain': #Labelling alpha carbons from relevant residues
+                  cmd.label('resi %s and n. CA' % int(key), '"%s %s" % (resn,resi)')
+                  
 
     cmd.extend("Colour_by_Selection", Colour_by_Selection)
     print("Structure will be at %s" % (os.path.dirname(PDB_file)))
