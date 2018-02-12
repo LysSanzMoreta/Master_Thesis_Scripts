@@ -92,6 +92,15 @@ def Global_alignment(chain_A,chain_B):
     Aligned_A, Aligned_B, score, begin, end = alignment_info_global
     return alignment_info_global,alignment_global
 
+def Local_alignment(chain_A,chain_B):
+    from Bio import pairwise2
+    from Bio.pairwise2 import format_alignment
+    alignment_local = pairwise2.align.localms(chain_A, chain_B, 2, -1, -5, -1)
+    #print(format_alignment(*alignment_global[0]))
+    alignment_info_local = alignment_local[0]
+    Aligned_A, Aligned_B, score, begin, end = alignment_info_local
+    return alignment_info_local,alignment_local
+
 def fasta_to_sequence(Fasta_file,Format):
     from Bio import SeqRecord, SeqIO
     fasta_sequences = SeqIO.parse(open(Fasta_file), Format)
@@ -374,8 +383,11 @@ def Read_List_of_domains(List_domains,domains,File_domains):
     else:#If there is a file with the domain sequences we get the equivalent positions with regards to the complete PDB sequence, not the one in the PDB file yet
         Full_PDB = ''.join(fasta_to_sequences(Full_PDB_sequence, 'fasta')[0])
         Sequences_domains = ''.join(fasta_to_sequences(File_domains,Gene_file_format)[0])
-        alignment_info_global, alignment_global = Global_alignment(Full_PDB,Sequences_domains)
-        Aligned_Full, Aligned_Domain, score, begin, end = alignment_info_global  # A = PDB; B = Gene(with or without missing data)
+        #alignment_info_global, alignment_global = Global_alignment(Full_PDB,Sequences_domains)
+        #Aligned_Full, Aligned_Domain, score, begin, end = alignment_info_global  # A = PDB; B = Gene(with or without missing data)
+        ########################LOCAL ALIGNMENT FOR THE DOMAIN SEQUENCES , THEY ARE TOO SHORT FOR A GLOBAL
+        alignment_info_local, alignment_local = Local_alignment(Full_PDB,Sequences_domains)
+        Aligned_Full, Aligned_Domain, score, begin, end = alignment_info_local  # A = PDB; B = Gene(with or without missing data)
         List_of_domains = equivalent_positions(Full_PDB_sequence,Sequences_domains,Aligned_Full,Aligned_Domain)
     return List_of_domains
 List_domains = Read_List_of_domains(List_domains,domains,File_domains) #Choose upon the 3 options to get the numbers
