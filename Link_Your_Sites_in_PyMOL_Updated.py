@@ -3,12 +3,10 @@
 
 #EXAMPLES TO RUN
 #WINDOWS: Put quotes in paths due to special characters
-#python Link_Your_Sites_in_PyMOL.py --PDB "C:/Users/Lys Sanz Moreta/Documents/New_genes_10_23_2017/PINK1.pdb" --Gene "C:/Users/Lys Sanz Moreta/Dropbox/THESIS/GENEaln/New_IDS/TGUT00000017792.map2finch.fasta" --M8 "C:/Users/Lys Sanz Moreta/Documents/New_genes_10_23_2017/PINK1_TGUT00000017792.map2finch.fasta/M8/out" --Full_PDB_sequence "C:/Users/Lys Sanz Moreta/Documents/New_genes_10_23_2017/PINK1.fasta" --domains list(range(1,229)) --format fasta
+#python Link_Your_Sites_in_PyMOL_Updated.py --PDB /home/lys/Documents/New_genes_10_23_2017/TLR3.pdb --Gene /home/lys/Dropbox/THESIS/GENEaln/New_IDS/TGUT00000007158.map2finch.fasta --M8 /home/lys/Documents/New_genes_10_23_2017/TLR3_TGUT00000007158.map2finch.fasta/M8/out --Full_PDB_sequence /home/lys/Documents/New_genes_10_23_2017/TLR3.fasta --file_domains /home/lys/Documents/New_genes_10_23_2017/TLR3_Domain.fasta --sequence_number 1 --missing_data no
 
 #LINUX: Put quotes around list of domains due to special tokens, the paths do not need double quotes unless special characters are present
-#python Link_Your_Sites_in_PyMOL.py --PDB /home/lys/Documents/New_genes_10_23_2017/PLA2G15.pdb --Gene /home/lys/Dropbox/THESIS/GENEaln/New_IDS/TGUT00000007252.map2finch.fasta --M8 /home/lys/Documents/New_genes_10_23_2017/PLA2G15_TGUT00000007252.map2finch.fasta/M8/out --Full_PDB_sequence /home/lys/Documents/New_genes_10_23_2017/PLA2G15.fasta --domains "list(range(136,210)) + list(range(317,505))"
-#python Link_Your_Sites_in_PyMOL.py --PDB /home/lys/Documents/New_genes_10_23_2017/PINK1.pdb --Gene /home/lys/Dropbox/THESIS/GENEaln/New_IDS/TGUT00000017792.map2finch.fasta --M8 /home/lys/Documents/New_genes_10_23_2017/PINK1_TGUT00000017792.map2finch.fasta/M8/out --Full_PDB_sequence /home/lys/Documents/New_genes_10_23_2017/PINK1.fasta --domains "list(range(1,229))" --format fasta
-#python Link_Your_Sites_in_PyMOL.py --PDB /home/lys/Documents/New_genes_10_23_2017/MKKS.pdb --Gene /home/lys/Dropbox/THESIS/GENEaln/New_IDS/ENSTGUT00000006356.map2finch.fasta --M8 /home/lys/Documents/New_genes_10_23_2017/MKKS_ENSTGUT00000006356.map2finch.fasta/M8/out --Full_PDB_sequence /home/lys/Documents/New_genes_10_23_2017/MKKS.fasta --domains "list(range(18,360))" --format fasta
+#python3 Link_Your_Sites_in_PyMOL_Updated.py --PDB /home/lys/Documents/New_genes_10_23_2017/TLR3.pdb --Gene /home/lys/Dropbox/THESIS/GENEaln/New_IDS/TGUT00000007158.map2finch.fasta --M8 /home/lys/Documents/New_genes_10_23_2017/TLR3_TGUT00000007158.map2finch.fasta/M8/out --Full_PDB_sequence /home/lys/Documents/New_genes_10_23_2017/TLR3.fasta --file_domains /home/lys/Documents/New_genes_10_23_2017/TLR3_Domain.fasta --sequence_number 1 --missing_data no
 
 
 
