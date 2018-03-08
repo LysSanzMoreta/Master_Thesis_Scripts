@@ -375,7 +375,7 @@ def Read_List_of_domains(List_domains,domains,File_domains):
 
             else:
                 List_of_domains = [line.rstrip('\n') for line in open(List_domains)]
-                List_of_domains = list(map(int, List_domains))
+                List_of_domains = list(map(int, List_of_domains))
         else:
             # Convert the input list in string format to a string by 'executing' it
             List_of_domains = eval(domains)
