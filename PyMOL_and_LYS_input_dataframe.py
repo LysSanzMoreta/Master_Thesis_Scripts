@@ -99,6 +99,12 @@ def Colour_by_Selection(selection="all",
   for key, value in position_phenotype_dict.items():
         print(int(key),value, colors[value])
         cmd.color(colors[value],'resi %s' % int(key)) #--------------->If it does not work probably it has to do with the Residues ID being wrong
+        if value == 'Selected_and_Domain': #Label the alpha carbon from positions selected and in the domain
+                print(key)
+                #cmd.select('Both','resi %s' % int(key)) #Create a selection
+                #cmd.label('Both and n. CA', '" %s %s" % (resn,resi)')
+                cmd.label('resi %s and n. CA' % int(key), '" %s %s" % (resn,resi)')
+                #cmd.label('resi %s' % int(key), '" %s %s" % (resn,resi)')
 
 
 
