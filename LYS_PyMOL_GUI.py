@@ -717,8 +717,7 @@ def Pymol():
         #READ PREVIOUSLY CREATED DATAFRAME:
 
         Data = Wrapper_of_all_functions(PDB_file, Gene, Full_PDB_sequence, M8, List_domains, Gene_file_format, prob,sequence_number, missing_data, print_alignment, chains)
-        print(Data)
-        exit()
+       
         #Option A: best alternative
         Data['PDB_Position'] = Data['PDB_Position'].astype(np.float64) #Need to convert to float to use isfinite
         Data = Data[np.isfinite(Data['PDB_Position'])]  # Remove the Residues that got 'nan' value in their equivalent positions
