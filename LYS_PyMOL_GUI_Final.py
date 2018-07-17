@@ -3,7 +3,6 @@
 import tkinter
 from tkinter import *
 from tkinter.filedialog import askopenfilename
-from tkinter.filedialog import askopenfilenames
 from tkinter.messagebox import showerror
 #Other imports
 import sys, ast, json
