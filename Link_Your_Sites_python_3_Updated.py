@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 #####IMPORT ALL NECESSARY MODULES#####
 
+
+
+#### ONLY CREATES THE EQUIVALENT POSITIONS DATAFRAME. NO PyMOL, no GUI
+
 #EXAMPLE TO RUN
 #python Link_Your_Sites_python_3_Updated.py --PDB "C:/Users/Lys Sanz Moreta/Documents/New_genes_10_23_2017/PINK1.pdb" --Gene "C:/Users/Lys Sanz Moreta/Dropbox/THESIS/GENEaln/New_IDS/TGUT00000017792.map2finch.fasta" --M8 "C:/Users/Lys Sanz Moreta/Documents/New_genes_10_23_2017/PINK1_TGUT00000017792.map2finch.fasta/M8/out" --Full_PDB_sequence "C:/Users/Lys Sanz Moreta/Documents/New_genes_10_23_2017/PINK1.fasta" --domains "list(range(1,229))" --format fasta --sequence_number 1
 #python Link_Your_Sites_python_3_Updated.py --PDB "C:/Users/Lys Sanz Moreta/Documents/New_genes_10_23_2017/PINK1.pdb" --Gene "C:/Users/Lys Sanz Moreta/Dropbox/THESIS/GENEaln/New_IDS/TGUT00000017792.map2finch.fasta" --M8 "C:/Users/Lys Sanz Moreta/Documents/New_genes_10_23_2017/PINK1_TGUT00000017792.map2finch.fasta/M8/out" --Full_PDB_sequence "C:/Users/Lys Sanz Moreta/Documents/New_genes_10_23_2017/PINK1.fasta" --domains "list(range(1,229))" --sequence_number 1
