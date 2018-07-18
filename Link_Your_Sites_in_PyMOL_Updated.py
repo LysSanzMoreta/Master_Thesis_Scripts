@@ -54,7 +54,7 @@ parser = argparse.ArgumentParser()
 
 #COMPULSORY files: Give error if not present
 parser.add_argument("--PDB",required = True,help ='Path to Protein DataBank file (use "" if errors)')
-parser.add_argument('--Gene',required = True,help = 'Path to Single nucleotide gene sequence or multiple alignment nucleotide sequences')
+parser.add_argument('--Gene',required = True,help = 'Path to Single coding nucleotide/amino acid sequence or multiple alignment of coding nucleotide/amino acid sequences')
 parser.add_argument('--M8',required =True,help ='Path to Out file from the Codeml model M8')
 parser.add_argument('--Full_PDB_sequence',required =True,help = 'Path to the Complete Fasta file of the PDB sequence (download from PDB as well)')
 #OPTIONAL arguments:
@@ -155,26 +155,52 @@ def fasta_to_sequences(Fasta_file,Format):
             List_of_names.append(name)
     return List_of_sequences,List_of_names
 
-def Translate_sequence(Fasta_file,Format,sequence_number):
-    if sequence_number != 0:
-        sequence = fasta_to_sequences(Fasta_file,Format)[0][sequence_number]
-        aa_seq = Seq(sequence).translate(stop_symbol="X")
-
+def validate(seq, alphabet='dna'):
+    """
+    Check that a sequence only contains values from DNA alphabet """
+    import re
+    alphabets = {'dna': re.compile('^[acgtn]*$', re.I),
+             'protein': re.compile('^[acdefghiklmnpqrstvwy]*$', re.I)}
+    if alphabets[alphabet].search(seq) is not None:
+         return True
     else:
+         return False
+
+def Translate_sequence(Fasta_file,Format,sequence_number): #Only for coding nucleotide sequences!!!!
+    from Bio.Alphabet import IUPAC,ProteinAlphabet
+    if sequence_number != 0: #if is not the first sequence
+        sequence = fasta_to_sequences(Fasta_file,Format)[0][sequence_number]
+        if validate(sequence) == True: #Check if is a nucleotided sequence
+            aa_seq = Seq(sequence).translate(stop_symbol="X")
+        else:
+            aa_seq=Seq(sequence)
+
+    else: #first sequence in the alignment/file
         sequence= fasta_to_sequence(Fasta_file,Format)[0]
-        aa_seq = Seq(sequence).translate(stop_symbol="X")
+        if validate(sequence) == True:
+            aa_seq = Seq(sequence).translate(stop_symbol="X")
+        else:
+            aa_seq = Seq(sequence)
     return aa_seq
 
 def Translate_and_Remove_missing_data(Fasta_file,Format,sequence_number):
     '''Remove the missing data ('X') from the sequences after being translated, otherwise the codons are affected'''
     if sequence_number != 0:
         sequence =fasta_to_sequences(Fasta_file,Format)[0][sequence_number]
-        clean_sequence = Seq(sequence).translate(stop_symbol="X")
-        clean_sequence = clean_sequence.ungap('X')
+        #clean_sequence = Seq(sequence).translate(stop_symbol="X")
+        #clean_sequence = clean_sequence.ungap('X')
+        if validate(sequence) == True:
+            clean_sequence = Seq(sequence).translate(stop_symbol="X")
+            clean_sequence = clean_sequence.ungap('X')
+        else:
+            clean_sequence = Seq(sequence).ungap('X') #maybe ungap
     else:
         sequence=fasta_to_sequence(Fasta_file,Format)[0]
-        clean_sequence = Seq(sequence).translate(stop_symbol="X")
-        clean_sequence = clean_sequence.ungap('X')
+        if validate(sequence) == True:
+            clean_sequence = Seq(sequence).translate(stop_symbol="X")
+            clean_sequence = clean_sequence.ungap('X')
+        else:
+            clean_sequence = Seq(sequence).ungap('X') #maybe ungap
     return clean_sequence
 
 def Extract_sequence_from_PDB(PDB_file,chains):
